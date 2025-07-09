@@ -1,4 +1,4 @@
-![SageCell](https://github.com/user-attachments/assets/552ecd94-3452-4659-abd7-287d9f5ff440)
+![SageCell](https://github.com/surlabs/SageCellForILIAS/blob/2cf6dd399a036787c76ece26ad830c1e38a62f2b/templates/images/SageCellBanner.png)
 
 # SageCell Page Component Plugin for ILIAS
 
