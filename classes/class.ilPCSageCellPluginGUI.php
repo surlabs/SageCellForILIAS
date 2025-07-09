@@ -81,7 +81,7 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 			}
 			if ($this->updateElement($existing_properties))
 			{
-				ilUtil::sendSuccess($lng->txt("msg_obj_modified"), true);
+				$tpl->setOnScreenMessage("success", $lng->txt("msg_obj_modified"), true);
 				$ilCtrl->redirect($this, 'edit');
 			}
 		}
@@ -106,7 +106,7 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 			$properties = array('sage_cell_input' => $form->getInput('sage_cell_input'), 'sage_cell_language' => $form->getInput('sage_cell_language'), 'sage_cell_code' => $sage_cell_code, 'sage_cell_auto_eval' => $form->getInput('sage_cell_auto_eval'), 'sage_cell_header_text' => $form->getInput('sage_cell_header_text'), 'sage_cell_footer_text' => $form->getInput('sage_cell_footer_text'), 'sage_cell_show_code_editor' => $form->getInput('sage_cell_show_code_editor'));
 			if ($this->createElement($properties))
 			{
-				ilUtil::sendSuccess($lng->txt("msg_obj_modified"), TRUE);
+				$tpl->setOnScreenMessage("success", $lng->txt("msg_obj_modified"), TRUE);
 				$this->returnToParent();
 			}
 		}
@@ -165,7 +165,7 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 	{
 		if ($a_mode == "preview")
 		{
-			ilUtil::sendInfo($this->txt("info_debug_mode"));
+			$tpl->setOnScreenMessage("info", $this->txt("info_debug_mode"));
 		}
 
 		require_once(__DIR__ . '/class.ilPCSageCellCache.php');

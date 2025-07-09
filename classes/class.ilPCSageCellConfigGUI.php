@@ -107,10 +107,10 @@ class ilPCSageCellConfigGUI extends ilPluginConfigGUI
 			$this->getObject()->setForceEvaluateButton($this->getForm()->getItemByPostVar("force_evaluate_button")->getValue());
 			if ($this->getObject()->save())
 			{
-				ilUtil::sendSuccess($this->getPluginObject()->txt("config_info_correct_saved"),TRUE);
+				$tpl->setOnScreenMessage("success", $this->getPluginObject()->txt("config_info_correct_saved"),TRUE);
 			} else
 			{
-				ilUtil::sendFailure($this->getPluginObject()->txt("config_info_error_saving"),TRUE);
+				$tpl->setOnScreenMessage("failure", $this->getPluginObject()->txt("config_info_error_saving"),TRUE);
 			}
 		}
 		$tpl->setContent($this->getForm()->getHtml());
