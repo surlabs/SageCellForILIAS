@@ -7,7 +7,7 @@ This Open Source ILIAS Plugin was initially created by the Innovation in Learnin
 
 ## What is SageCell for ILIAS?
 
-SageCell is a Page Component plugin that enhances ILIAS pages by allowing authors to include Sage content.
+SageCell is a page component plugin for "Learning Modules" that enhances ILIAS pages by allowing authors to include Sage, HTML or Python content among other programming languages.
 
 ### Software Requirements
 
