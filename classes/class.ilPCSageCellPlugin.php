@@ -114,6 +114,10 @@ class ilPCSageCellPlugin extends ilPageComponentPlugin
 		//We have to replace carriage return ascii &#13; with \r in order to get a proper display of the code
 		$a_code = str_replace('&#13;', "\r", $a_code);
 
+        // Replace gt and lt with their HTML entities
+        $a_code = str_replace('&gt;', '>', $a_code);
+        $a_code = str_replace('&lt;', '<', $a_code);
+
 		// braces may be used in code, so don't replace them
 		return $a_code;
 	}
