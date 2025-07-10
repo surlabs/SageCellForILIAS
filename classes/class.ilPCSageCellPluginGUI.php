@@ -163,6 +163,10 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 	 */
 	public function getPageViewHTML($a_mode, $a_properties)
 	{
+        global $DIC;
+
+        $tpl = $DIC->ui()->mainTemplate();
+
 		if ($a_mode == "preview")
 		{
 			$tpl->setOnScreenMessage("info", $this->txt("info_debug_mode"));
