@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{CSS_URL}" media="screen" />
 
     <script type="text/javascript">
-        $(function () {
+        setTimeout(function () {
             // Make *any* div with class 'compute' a Sage cell
             sagecell.makeSagecell({
                 codeLocation: '#codeinput',
@@ -43,7 +43,7 @@
                 //acResposiveIframe.height(acIframeContent.height());
             }
 
-        });
+        }, 100);
     </script>
 
 </head>

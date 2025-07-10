@@ -15,7 +15,18 @@ include_once("./Services/COPage/classes/class.ilPageComponentPlugin.php");
  */
 class ilPCSageCellPlugin extends ilPageComponentPlugin
 {
-	/**
+    public function __construct()
+    {
+        global $DIC;
+
+        $db = $DIC->database();
+        $component_repository = $DIC["component.repository"];
+        $id = "pcsage";
+
+        parent::__construct($db, $component_repository, $id);
+    }
+
+    /**
 	 * Get plugin name
 	 *
 	 * @return string

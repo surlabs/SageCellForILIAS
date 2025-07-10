@@ -226,14 +226,18 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 		$sage_cell_input->setSize(40);
 		$sage_cell_input->setRequired(true);
 		$sage_cell_input->setInfo($this->txt("form_sage_cell_name_info"));
-		$sage_cell_input->setValue($prop['sage_cell_input']);
+        if (isset($prop['sage_cell_input'])) {
+            $sage_cell_input->setValue($prop['sage_cell_input']);
+        }
 		$form->addItem($sage_cell_input);
 
 		//SageCell code language
 		$sage_cell_code_language = new ilSelectInputGUI($this->txt("form_code_language"), "sage_cell_language");
 		$sage_cell_code_language->setOptions(array("sage" => "Sage", "gap" => "Gap", "gp" => "GP", "html" => "HTML", "maxima" => "Maxima", "octave" => "Octave", "python" => "Python", "r" => "R", "singular" => "Singular"));
 		$sage_cell_code_language->setInfo($this->txt("form_code_language_info"));
-		$sage_cell_code_language->setValue($prop['sage_cell_language']);
+        if (isset($prop['sage_cell_language'])) {
+            $sage_cell_code_language->setValue($prop['sage_cell_language']);
+            }
 		$form->addItem($sage_cell_code_language);
 
 		//Extra info textarea
@@ -241,18 +245,22 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 		$sage_cell_extra_info_textarea->setInfo($this->txt("form_sage_cell_header_text_info"));
 		$sage_cell_extra_info_textarea->setUseRte(1);
 		$sage_cell_extra_info_textarea->setRteTagSet('extended');
-		$sage_cell_extra_info_textarea->setValue($prop['sage_cell_header_text']);
+        if (isset($prop['sage_cell_header_text'])) {
+            $sage_cell_extra_info_textarea->setValue($prop['sage_cell_header_text']);
+        }
 		$form->addItem($sage_cell_extra_info_textarea);
 
 		//sagecell code script
-		$this->createCodeEditorFormInput($form, 'form_sage_cell_code_editor', $prop['sage_cell_code']);
+		$this->createCodeEditorFormInput($form, 'form_sage_cell_code_editor', $prop['sage_cell_code'] ?? "");
 
 		//Footer text textarea
 		$sage_cell_footer_textarea = new ilTextAreaInputGUI($this->txt('form_sage_cell_footer_text'), 'sage_cell_footer_text');
 		$sage_cell_footer_textarea->setInfo($this->txt("form_sage_cell_footer_text_info"));
 		$sage_cell_footer_textarea->setUseRte(1);
 		$sage_cell_footer_textarea->setRteTagSet('extended');
-		$sage_cell_footer_textarea->setValue($prop['sage_cell_footer_text']);
+        if (isset($prop['sage_cell_footer_text'])) {
+            $sage_cell_footer_textarea->setValue($prop['sage_cell_footer_text']);
+        }
 		$form->addItem($sage_cell_footer_textarea);
 
 		//Show code editor
@@ -263,17 +271,18 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 		$sage_cell_show_code_editor->addOption($option_show);
 		$option_hide = new ilRadioOption($this->txt("form_sage_cell_show_code_hide"), 'hide', $this->txt("form_sage_cell_show_code_hide_info"));
 		$sage_cell_show_code_editor->addOption($option_hide);
-		$sage_cell_show_code_editor->setValue($prop['sage_cell_show_code_editor']);
+        if (isset($prop['sage_cell_show_code_editor'])) {
+            $sage_cell_show_code_editor->setValue($prop['sage_cell_show_code_editor']);
+        }
 
 		$form->addItem($sage_cell_show_code_editor);
 
 		//Activate Auto Evaluation (Deactivate if evaluate button is forced in admin)
-		$this->plugin->includeClass('class.ilPCSageCellConfig.php');
 		$config = new ilPCSageCellConfig();
 		$sage_cell_auto_eval = new ilSelectInputGUI($this->txt("form_auto_eval_button"), "sage_cell_auto_eval");
 		$sage_cell_auto_eval->setOptions(array('1' => $lng->txt('yes'), '0' => $lng->txt('no')));
 		$sage_cell_auto_eval->setInfo($this->txt("form_auto_eval_button_info"));
-		if ((int)$prop['sage_cell_auto_eval'])
+		if (isset($prop['sage_cell_auto_eval']) && (int)$prop['sage_cell_auto_eval'])
 		{
 			$sage_cell_auto_eval->setValue('1');
 		} else
@@ -284,7 +293,7 @@ class ilPCSageCellPluginGUI extends ilPageComponentPluginGUI
 		if ($config->getForceEvaluateButton())
 		{
 			$sage_cell_auto_eval->setDisabled(TRUE);
-			$sage_cell_auto_eval->setValue(FALSE);
+			$sage_cell_auto_eval->setValue("0");
 		}
 		$form->addItem($sage_cell_auto_eval);
 

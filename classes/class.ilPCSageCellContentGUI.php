@@ -113,7 +113,7 @@ class ilPCSageCellContentGUI
 
 		if ($this->mode == "preview")
 		{
-			$tpl->setVariable('DEBUG_MODE', ',mode: "debug"');
+			$tpl->setVariable('DEBUG_MODE', 'mode: "debug"');
 		}else{
 			$tpl->setVariable('DEBUG_MODE', '');
 		}
